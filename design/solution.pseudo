@@ -1,0 +1,77 @@
+// Operaciones y métodos a realizar
+      1. Leer la matriz.
+      2. Sumar y multiplicar filas y columnas desde una celda inicial especificada hasta una celda final especificada.
+      3. Obtener el valor máximo y mínimo de una fila o columna desde una celda inicial hasta una celda final.
+      4. Obtener el promedio y la mediana de una fila o columna desde una celda inicial hasta una celda final.
+      5. Crear subconjuntos formados por celdas de la hoja de cálculo.
+      6. Sumar y multiplicar subconjuntos.
+      7. Calcular promedio y mediana de subconjuntos.
+      8. Imprimir la matriz según las operaciones realizadas y el formato correspondiente
+
+// Función principal
+function run(args) do
+  let is_running = true
+
+  while (is_running == true) do
+    let rows = readInteger()
+    let cols = readInteger()
+
+    if rows == 0 AND cols == 0 do
+      is_running = false
+
+    else if rows > 0 AND cols > 0 do
+      // Crear la hoja de cálculo
+      let hoja[][] = createMatrix(rows, cols)
+
+      // Leer cada fila de la entrada estándar
+      for let i = 0; i < rows; i++ do
+        let linea = readLine()
+        for let j = 0; j < cols; j++ do
+          hoja[i][j] = linea[j]
+        end
+      end
+
+      // Mostrar la hoja
+      printMatrix(hoja)
+    end 
+  end
+end
+end 
+function sumar(sheet, tipo, index, inicio, fin) do
+  let suma = 0
+
+  if tipo == "fila" do
+    for let j = inicio; j <= fin; j++ do
+      suma = suma + sheet[index][j]
+    end
+
+  else if tipo == "columna" do
+    for let i = inicio; i <= fin; i++ do
+      suma = suma + sheet[i][index]
+    end
+  end
+  return suma
+end
+end 
+// Método para multiplicar elementos de la hoja de cálculo
+function multiplicar(sheet, tipo, index, inicio, fin) do 
+  let producto = 1
+
+  if tipo == "fila" do
+    for let j = inicio; j <= fin; j++ do
+      producto = producto * sheet[index][j]
+    end
+
+  else if tipo == "columna" do
+    for let i = inicio; i <= fin; i++ do
+      producto = producto * sheet[i][index]
+    end
+  end
+
+  return producto
+end
+end
+
+//Ejemplo a hacer para el pseudo
+//let tipo = "fila"   // o "columna"
+//let resultado = sumar(hoja, tipo, 1, 0, 3)
